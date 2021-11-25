@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de remuneração</title>
+    
+</head>
+<body>
+    <main>
+        <section>
+            
+            
+            
+            <h1>Cadastre seus empregados</h1>
+            <form action="salvar.php" method="get" onsubmit="return Cadastro()">
+                <label for="empregados" >Quantos empregados serão cadastrados? </label>
+
+                <input type="number" id="empregados" min="1">
+                <input type="submit" id="but" value="CALCULE">
+            </form>
+
+            <p id="resultado">O resultado irá aparecer aqui</p>   
+
+        
+        </section>
+    </main>
+    
+    
+    
+    
+    <script>
+
+let r = document.getElementById("resultado")
+function Cadastro() {
+    let e = Number(document.getElementById("empregados").value)
+   
+   
+    let n = 1
+    
+    
+    let sum = 0
+    
+    
+    let media = 0
+    
+    
+    let small = 0
+    
+    
+    let big = 0 
+    
+    
+    let wage = 0
+    
+    
+    
+    while (n <= e) {
+        wage = Number(prompt("Quanto é o salário dos empregados?"))
+        sum += wage
+        media = sum / e
+if (n == 1) {
+            big = wage
+            small = wage
+        }
+         else {
+            if (wage >big) {
+                big = wage
+            }
+else if (wage < small) {
+                small = wage 
+            }
+        }
+        n++
+    }
+    
+    
+    r.innerHTML = `O número de salários que foram cadastrados foi de: ${e} empregados.<br>
+     A empresa irá precisar de ${sum} reais para remunerar esses ${e} empregados.<br>
+      O empregado mais bem pago recebeu:  ${big} reais.<br>
+     O funcionário menos bem pago recebeu: ${small} reais.<br>
+     A média de salários dos ${e} foi um total de: ${media}.`
+    return false }
+
+    </script>          
+    
+</body>
+</html>
